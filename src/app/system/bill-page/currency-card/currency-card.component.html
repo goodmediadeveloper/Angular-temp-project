@@ -1,0 +1,29 @@
+
+  <h4>Курс</h4>
+  <table class="table table-striped"
+         style="background-color: #fff;
+              background-clip: border-box;
+              border: 1px solid rgba(0, 0, 0, 0.125);
+              border-radius: 5px;"
+  >
+    <thead>
+    <tr>
+      <th scope="col">Валюта</th>
+      <th scope="col">Курс</th>
+      <th scope="col">Дата</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>RUB</td>
+      <td>1</td>
+      <td>{{currency.date | wfMoment: 'YYYY-MM-DD'}}</td>
+    </tr>
+    <tr *ngFor="let curr of currencies">
+      <td>{{ curr }}</td>
+      <td>{{ currency['rates'][curr] }}</td>
+      <td>{{ currency.date | wfMoment: 'YYYY-MM-DD'}}</td>
+    </tr>
+    <tr>
+    </tbody>
+  </table>

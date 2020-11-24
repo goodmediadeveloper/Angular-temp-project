@@ -1,0 +1,56 @@
+<div class="alert alert-{{message.type}}" *ngIf="message.text">{{message.text}}</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <h5 class="mb-5">Войдите для работы</h5>
+
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="text"
+           class="form-control underlined rounded-pill"
+           id="email"
+           placeholder="Введите ваш email"
+           formControlName="email"
+    />
+    <span *ngIf="form.get('email').invalid && form.get('email').touched">
+      <span class="text-danger" *ngIf="form.get('email').errors.required">
+        Поле Email не должно быть пустым
+      </span>
+      <span class="text-danger" *ngIf="form.get('email').errors.email">
+        Введите корректный Email
+      </span>
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password"
+           class="form-control underlined rounded-pill"
+           id="password"
+           placeholder="Введите пароль"
+           formControlName="password"
+    />
+    <span *ngIf="form.get('password').invalid && form.get('password').touched">
+      <span class="text-danger" *ngIf="form.get('password').errors.required">
+        Поле Password не должно быть пустым
+      </span>
+      <span class="text-danger" *ngIf="form.get('password').errors.minlength">
+        Поле Password должно быть не менее {{form.get('password').errors.minlength["requiredLength"]}} -и символов.
+        Сейчас - {{form.get('password').errors.minlength["actualLength"]}}
+      </span>
+    </span>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary rounded-pill"
+    [disabled]="form.invalid"
+  >
+    Submit
+  </button>
+
+  <br>
+  <br>
+  <a [routerLink]="'/registration'" class="badge badge-info">Зарегистрироваться</a>
+
+</form>

@@ -1,0 +1,17 @@
+<article class="container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <h2>
+        Страница счета
+      </h2>
+    </div>
+    <div class="col-4">
+      <button type="button" class="btn btn-primary btn-sm" (click)="onRefresh()">Refresh</button>
+    </div>
+
+    <div class="row text-center text-info" *ngIf="!isLoaded">loading ....</div>
+      <wf-bill-card class="col-3" [bill]="bill" [currency]="currency" *ngIf="isLoaded"></wf-bill-card>
+      <wf-currency-card class="col-5 offset-1" [currency]="currency" *ngIf="isLoaded"></wf-currency-card>
+  </div>
+</article>
+
